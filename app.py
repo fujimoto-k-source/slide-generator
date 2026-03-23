@@ -489,7 +489,7 @@ def _lay_stat(sl, sd, th, ahex, chart=None):
     bullets = sd.get('bullets', [])
     y = 4.25
     for b in bullets[:3]:
-        _tb(sl, f'\u2014  {b}', LM, y, 5.5, 0.4,
+        _tb(sl, f'— {b}', LM, y, 5.5, 0.4,
             size=13, color=th['body'], lh=1.4)
         y += 0.48
 
@@ -508,7 +508,7 @@ def _lay_split(sl, sd, th, ahex, img=None):
     bullets = sd.get('bullets', [])
     y = 1.50
     for b in bullets:
-        _tb(sl, f'\u2014  {b}', LM, y, 5.6, 0.52,
+        _tb(sl, f'— {b}', LM, y, 5.6, 0.52,
             size=15, color=th['body'], lh=1.45)
         y += 0.62
 
@@ -585,7 +585,7 @@ def _lay_compare(sl, sd, th, ahex):
         size=18, bold=True, color=th['accent'], tracking=-20)
     y = 2.35
     for item in left.get('items', []):
-        _tb(sl, f'\u2014  {item}', LM+0.3, y, hw-0.6, 0.4,
+        _tb(sl, f'— {item}', LM+0.3, y, hw-0.6, 0.4,
             size=13, color=th['body'], lh=1.4)
         y += 0.50
 
@@ -598,7 +598,7 @@ def _lay_compare(sl, sd, th, ahex):
         size=18, bold=True, color=th['accent'], tracking=-20)
     y = 2.35
     for item in right.get('items', []):
-        _tb(sl, f'\u2014  {item}', rx+0.3, y, hw-0.6, 0.4,
+        _tb(sl, f'— {item}', rx+0.3, y, hw-0.6, 0.4,
             size=13, color=th['body'], lh=1.4)
         y += 0.50
 
@@ -620,7 +620,7 @@ def _lay_chart(sl, sd, th, ahex, chart=None):
     if bullets and not chart:
         y = 1.60
         for b in bullets:
-            _tb(sl, f'\u2014  {b}', LM, y, CW, 0.4,
+            _tb(sl, f'— {b}', LM, y, CW, 0.4,
                 size=14, color=th['body'], lh=1.45)
             y += 0.55
     _rect(sl, 0, H-0.04, W, 0.04, fill=th['accent'])
@@ -745,16 +745,16 @@ st.markdown(
     unsafe_allow_html=True)
 
 # Step 01
-st.markdown('<span class="step-label">Step 01 ─ Gemini API キー</span>',
+st.markdown('<span class="step-label">Step 01 — Gemini API キー</span>',
             unsafe_allow_html=True)
 api_key = st.text_input(
     'API Key', type='password',
-    placeholder='Gemini API キー（Google AI Studio で取得）',
+    placeholder='Gemini API キー(Google AI Studio で取得)',
     label_visibility='collapsed',
     help='https://aistudio.google.com/apikey から無料で取得できます')
 
 # Step 02
-st.markdown('<span class="step-label">Step 02 ─ アクセントカラー</span>',
+st.markdown('<span class="step-label">Step 02 — アクセントカラー</span>',
             unsafe_allow_html=True)
 accent_label = st.radio('Accent', list(ACCENT_PRESETS.keys()),
                          label_visibility='collapsed')
@@ -772,13 +772,13 @@ with col2:
             st.warning('HEX形式が正しくありません')
 
 st.markdown(
-    f'<div style="margin-top:4px;">
-    f'<span class="swatch" style="background:{accent_hex};"></span>
-    f'<span style="font-size:12px;color:#999;letter-spacing:.04em;">{accent_hex}</span>
+    f'<div style="margin-top:4px;">'
+    f'<span class="swatch" style="background:{accent_hex};"></span>'
+    f'<span style="font-size:12px;color:#999;letter-spacing:.04em;">{accent_hex}</span>'
     f'</div>', unsafe_allow_html=True)
 
 # Step 03
-st.markdown('<span class="step-label">Step 03 ─ 作成者 / 会社名</span>',
+st.markdown('<span class="step-label">Step 03 — 作成者 / 会社名</span>',
             unsafe_allow_html=True)
 c1, _ = st.columns([1, 1])
 with c1:
@@ -787,7 +787,7 @@ with c1:
 
 # Step 04
 st.markdown('<hr class="divider">', unsafe_allow_html=True)
-st.markdown('<span class="step-label">Step 04 ─ コンテンツ入力</span>',
+st.markdown('<span class="step-label">Step 04 — コンテンツ入力</span>',
             unsafe_allow_html=True)
 
 text_input = st.text_area(
@@ -830,15 +830,15 @@ if st.button('スライドを生成'):
             else:
                 bar.progress(25, text=f'{len(slides)}枚のスライドを構成しました')
 
-                with st.expander(f'スライド構成（{len(slides)}枚）',
+                with st.expander(f'スライド構成({len(slides)}枚)',
                                  expanded=False):
                     for i, sd in enumerate(slides):
                         lay = sd.get('layout', '')
                         ttl = sd.get('title', '')
                         st.markdown(
-                            f'<div class="preview-card">
-                            f'<div class="preview-tag">{i+1:02d} / {lay}</div>
-                            f'<div class="preview-name">{ttl}</div>
+                            f'<div class="preview-card">'
+                            f'<div class="preview-tag">{i+1:02d} / {lay}</div>'
+                            f'<div class="preview-name">{ttl}</div>'
                             f'</div>', unsafe_allow_html=True)
 
                 def update(i, total, msg):
@@ -863,7 +863,6 @@ if st.button('スライドを生成'):
                     mime='application/vnd.openxmlformats-officedocument.presentationml.presentation')
 
 st.markdown(
-    '<div style="text-align:center;font-size:10px;color:#E0E0E0;
-    'letter-spacing:.18em;text-transform:uppercase;margin-top:64px;">
+    '<div style="text-align:center;font-size:10px;color:#E0E0E0;'
+    'letter-spacing:.18em;text-transform:uppercase;margin-top:64px;">'
     'Powered by Gemini + Claude</div>', unsafe_allow_html=True)
-
